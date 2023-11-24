@@ -82,7 +82,7 @@ var DataTable = $.fn.dataTable;
  *  @constructor
  *  @global
  *  @param {object} dt DataTables settings object or API instance
- *  @param {object} [opts={}] Configuration object for Scroller. Options 
+ *  @param {object} [opts={}] Configuration object for Scroller. Options
  *    are defined by {@link Scroller.defaults}
  *
  *  @requires jQuery 1.7+
@@ -180,7 +180,7 @@ var Scroller = function ( dt, opts ) {
 
 		/**
 		 * setTimeout reference for state saving, used when state saving is enabled in the DataTable
-		 * and when the user scrolls the viewport in order to stop the cookie set taking too much
+		 * and when the users scrolls the viewport in order to stop the cookie set taking too much
 		 * CPU!
 		 *  @type     int
 		 *  @default  0
@@ -296,7 +296,7 @@ $.extend( Scroller.prototype, {
 		}
 
 		var label = this.dom.label.outerHeight();
-		
+
 		heights.xbar = this.dom.scroller.offsetHeight - this.dom.scroller.clientHeight;
 		heights.labelHeight = label;
 
@@ -318,7 +318,7 @@ $.extend( Scroller.prototype, {
 	*/
 	pageInfo: function()
 	{
-		var 
+		var
 			dt = this.s.dt,
 			iScrollTop = this.dom.scroller.scrollTop,
 			iTotal = dt.fnRecordsDisplay(),
@@ -502,7 +502,7 @@ $.extend( Scroller.prototype, {
 			that._scroll.call( that );
 		} );
 
-		// In iOS we catch the touchstart event in case the user tries to scroll
+		// In iOS we catch the touchstart event in case the users tries to scroll
 		// while the display is already scrolling
 		$(this.dom.scroller).on('touchstart.dt-scroller', function () {
 			that._scroll.call( that );
@@ -552,7 +552,7 @@ $.extend( Scroller.prototype, {
 		}
 
 		this.measure( false );
-	
+
 		that.s.stateSaveThrottle = that.s.dt.oApi._fnThrottle( function () {
 			that.s.dtApi.state.save();
 		}, 500 );
@@ -633,7 +633,7 @@ $.extend( Scroller.prototype, {
                 tbody.append('<tr><td>&#160;</td></tr>');
             }
 		}
-	
+
 		$('div.'+dt.oClasses.sScrollBody, container).append( nTable );
 
 		// If initialised using `dom`, use the holding element as the insert point
@@ -766,7 +766,7 @@ $.extend( Scroller.prototype, {
 	 * had scrolling containers of infinite height (i.e. the absolute value)
 	 *
 	 *  @param {string} dir Domain transform direction, `virtualToPhysical` or
-	 *    `physicalToVirtual` 
+	 *    `physicalToVirtual`
 	 *  @returns {number} Calculated transform
 	 *  @private
 	 */
@@ -1082,7 +1082,7 @@ $.extend( Scroller.prototype, {
 
 	/**
 	 * Force the scrolling container to have height beyond that of just the
-	 * table that has been drawn so the user can scroll the whole data set.
+	 * table that has been drawn so the users can scroll the whole data set.
 	 *
 	 * Note that if the calculated required scrolling height exceeds a maximum
 	 * value (1 million pixels - hard-coded) the forcing element will be set
@@ -1128,7 +1128,7 @@ Scroller.defaults = {
 	/**
 	 * Scroller uses the boundary scaling factor to decide when to redraw the table - which it
 	 * typically does before you reach the end of the currently loaded data set (in order to
-	 * allow the data to look continuous to a user scrolling through the data). If given as 0
+	 * allow the data to look continuous to a users scrolling through the data). If given as 0
 	 * then the table will be redrawn whenever the viewport is scrolled, while 1 would not
 	 * redraw the table until the currently loaded data has all been shown. You will want
 	 * something in the middle - the default factor of 0.5 is usually suitable.

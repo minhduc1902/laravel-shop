@@ -19,7 +19,7 @@
             }
             var table = new dataTable.Api(settings);
             this.classes = $.extend(true, {}, FixedColumns.classes);
-            // Get options from user
+            // Get options from users
             this.c = $.extend(true, {}, FixedColumns.defaults, opts);
             // Backwards compatibility for deprecated leftColumns
             if (opts.left === undefined && this.c.leftColumns !== undefined) {

@@ -245,7 +245,7 @@ $.extend( RowGroup.prototype, {
 			if ( group === null || group === undefined ) {
 				group = that.c.emptyDataGroup;
 			}
-			
+
 			if ( last === undefined || group !== last ) {
 				data.push( {
 					dataPoint: group,
@@ -277,7 +277,7 @@ $.extend( RowGroup.prototype, {
 	{
 		var dt = this.s.dt;
 		var display;
-	
+
 		for ( var i=0, ien=groups.length ; i<ien ; i++ ) {
 			var group = groups[i];
 			var groupName = group.dataPoint;
@@ -309,7 +309,7 @@ $.extend( RowGroup.prototype, {
 	},
 
 	/**
-	 * Take a rendered value from an end user and make it suitable for display
+	 * Take a rendered value from an end users and make it suitable for display
 	 * as a row, by wrapping it in a row, or detecting that it is a row.
 	 * @param {node|jQuery|string} display Display value
 	 * @param {string} className Class to add to the row
@@ -320,7 +320,7 @@ $.extend( RowGroup.prototype, {
 	_rowWrap: function ( display, className, level )
 	{
 		var row;
-		
+
 		if ( display === null || display === '' ) {
 			display = this.c.emptyDataGroup;
 		}
@@ -328,7 +328,7 @@ $.extend( RowGroup.prototype, {
 		if ( display === undefined || display === null ) {
 			return null;
 		}
-		
+
 		if ( typeof display === 'object' && display.nodeName && display.nodeName.toLowerCase() === 'tr') {
 			row = $(display);
 		}

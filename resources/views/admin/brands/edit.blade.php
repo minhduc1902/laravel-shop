@@ -8,10 +8,10 @@
         <div class="container-fluid my-2">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Edit Brand</h1>
+                    <h1>Chỉnh sửa xuất sứ</h1>
                 </div>
                 <div class="col-sm-6 text-right">
-                    <a href="{{ route('brands.index') }}" class="btn btn-primary">Back</a>
+                    <a href="{{ route('brands.index') }}" class="btn btn-primary">Trở về</a>
                 </div>
             </div>
         </div>
@@ -27,9 +27,9 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="name">Name</label>
+                                    <label for="name">Tên</label>
                                     <input type="text" value="{{ $brand->name }}" name="name" id="name" class="form-control"
-                                        placeholder="Name">
+                                        placeholder="Tên">
                                         <p></p>
                                 </div>
                             </div>
@@ -43,8 +43,8 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="status">Status</label>
-                                    <select name="status" id="status" class="form-control" placeholder="Status">
+                                    <label for="status">Trạng thái</label>
+                                    <select name="status" id="status" class="form-control">
                                         <option {{ ($brand->status == 1) ? 'selected' : '' }} value="1">Active</option>
                                         <option {{ ($brand->status == 0) ? 'selected' : '' }} value="0">Block</option>
                                     </select>
@@ -54,8 +54,8 @@
                     </div>
                 </div>
                 <div class="pb-5 pt-3">
-                    <button type="submit" class="btn btn-primary">Create</button>
-                    <a href="{{ route('brands.index') }}" class="btn btn-outline-dark ml-3">Cancel</a>
+                    <button type="submit" class="btn btn-primary">Cập nhật</button>
+                    <a href="{{ route('brands.index') }}" class="btn btn-outline-dark ml-3">Hủy bỏ</a>
                 </div>
             </form>
         </div>
@@ -117,7 +117,7 @@
 
         $("#name").change(function() {
 			element = $(this);
-            $("button[type=submit]").prop('disabled', true); 
+            $("button[type=submit]").prop('disabled', true);
             $.ajax({
                 url: '{{ route("getSlug") }}',
                 type: 'get',

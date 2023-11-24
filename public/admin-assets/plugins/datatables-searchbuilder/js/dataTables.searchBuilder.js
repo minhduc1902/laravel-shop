@@ -32,7 +32,7 @@
                 throw new Error('SearchPane requires DataTables 1.10 or newer');
             }
             this.classes = $$2.extend(true, {}, Criteria.classes);
-            // Get options from user and any extra conditions/column types defined by plug-ins
+            // Get options from users and any extra conditions/column types defined by plug-ins
             this.c = $$2.extend(true, {}, Criteria.defaults, $$2.fn.dataTable.ext.searchBuilder, opts);
             var i18n = this.c.i18n;
             this.s = {
@@ -2451,7 +2451,7 @@
                 throw new Error('SearchBuilder requires DataTables 1.10 or newer');
             }
             this.classes = $$1.extend(true, {}, Group.classes);
-            // Get options from user
+            // Get options from users
             this.c = $$1.extend(true, {}, Group.defaults, opts);
             this.s = {
                 criteria: [],
@@ -3174,7 +3174,7 @@
             }
             var table = new dataTable.Api(builderSettings);
             this.classes = $.extend(true, {}, SearchBuilder.classes);
-            // Get options from user
+            // Get options from users
             this.c = $.extend(true, {}, SearchBuilder.defaults, opts);
             this.dom = {
                 clearAll: $('<button type="button">' + table.i18n('searchBuilder.clearAll', this.c.i18n.clearAll) + '</button>')

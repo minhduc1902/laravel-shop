@@ -10,21 +10,20 @@ use Intervention\Image\Facades\Image;
 class TempImagesController extends Controller
 {
     public function create(Request $request) {
-        $image = $request->image;
-
-        if(!empty($image)) {
-            $ext = $image->getClientOriginalExtension();
-            $newName = time().'.'.$ext;
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $extension = $image->getClientOriginalExtension();
+            $newFileName = time().'.'.$extension;
 
             $tempImage = new TempImages();
-            $tempImage->name = $newName;
+            $tempImage->name = $newFileName;
             $tempImage->save();
-            
-            $image->move(public_path().'/temp', $newName);
 
-            //Generate thumbnail
-            $sourcePath = public_path().'/temp/'.$newName;
-            $destPath = public_path().'/temp/thumb/'.$newName;
+            $image->move(public_path('temp'), $newFileName);
+
+            // Generate thumbnail
+            $sourcePath = public_path('temp') . '/' . $newFileName;
+            $destPath = public_path('temp/thumb') . '/' . $newFileName;
             $image = Image::make($sourcePath);
             $image->fit(300, 275);
             $image->save($destPath);
@@ -32,8 +31,13 @@ class TempImagesController extends Controller
             return response()->json([
                 'status' => true,
                 'image_id' => $tempImage->id,
-                'ImagePath' => asset('/temp/thumb/'.$newName),
-                'message' => 'Image uploaded successfully'
+                'ImagePath' => asset('temp/thumb/' . $newFileName),
+                'message' => 'Hình ảnh được tải lên thành công.'
+            ]);
+        } else {
+            return response()->json([
+                'status' => false,
+                'message' => 'Không tìm thấy hình ảnh trong yêu cầu.'
             ]);
         }
     }

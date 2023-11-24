@@ -33,7 +33,7 @@
             }
             var table = new dataTable.Api(paneSettings);
             this.classes = $.extend(true, {}, SearchPane.classes);
-            // Get options from user
+            // Get options from users
             this.c = $.extend(true, {}, SearchPane.defaults, opts);
             if (opts !== undefined && opts.hideCount !== undefined && opts.viewCount === undefined) {
                 this.c.viewCount = !this.c.hideCount;
@@ -195,7 +195,7 @@
         /**
          * Adds a row to the panes table
          *
-         * @param display the value to be displayed to the user
+         * @param display the value to be displayed to the users
          * @param filter the value to be filtered on when searchpanes is implemented
          * @param shown the number of rows in the table that are currently visible matching this criteria
          * @param total the total number of rows in the table that match this criteria
@@ -571,8 +571,8 @@
                     });
                 });
             }
-            this.s.dtPane.off('user-select.dtsp');
-            this.s.dtPane.on('user-select.dtsp', function (e, _dt, type, cell, originalEvent) {
+            this.s.dtPane.off('users-select.dtsp');
+            this.s.dtPane.on('users-select.dtsp', function (e, _dt, type, cell, originalEvent) {
                 originalEvent.stopPropagation();
             });
             this.s.dtPane.off('draw.dtsp');
@@ -927,7 +927,7 @@
                         },
                         targets: 0,
                         // Accessing the private datatables property to set type based on the original table.
-                        // This is null if not defined by the user, meaning that automatic type detection
+                        // This is null if not defined by the users, meaning that automatic type detection
                         //  would take place
                         type: table.settings()[0].aoColumns[this.s.index] !== undefined ?
                             table.settings()[0].aoColumns[this.s.index]._sManualType :
@@ -1204,7 +1204,7 @@
         /**
          * Gets the options for the row for the customPanes
          *
-         * @returns {object} The options for the row extended to include the options from the user.
+         * @returns {object} The options for the row extended to include the options from the users.
          */
         SearchPane.prototype._getBonusOptions = function () {
             // We need to reset the thresholds as if they have a value in colOpts then that value will be used
@@ -1283,7 +1283,7 @@
         /**
          * Gets the options for the row for the customPanes
          *
-         * @returns {object} The options for the row extended to include the options from the user.
+         * @returns {object} The options for the row extended to include the options from the users.
          */
         SearchPane.prototype._getOptions = function () {
             var table = this.s.dt;
@@ -1750,7 +1750,7 @@
             }
             var table = new dataTable$1.Api(paneSettings);
             this.classes = $$1.extend(true, {}, SearchPanes.classes);
-            // Get options from user
+            // Get options from users
             this.c = $$1.extend(true, {}, SearchPanes.defaults, opts);
             // Add extra elements to DOM object including clear
             this.dom = {

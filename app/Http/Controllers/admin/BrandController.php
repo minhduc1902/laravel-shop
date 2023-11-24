@@ -14,7 +14,7 @@ class BrandController extends Controller
 
         if(!empty($request->get('keyword'))) {
             $brands = $brands->where('name', 'like', '%' . $request->get('keyword') . '%');
-        }    
+        }
 
         $brands = $brands->paginate(10);
 
@@ -27,27 +27,29 @@ class BrandController extends Controller
     }
 
     public function store(Request $request) {
-        $Validator = Validator::make($request->all(), [
+        $validator = Validator::make($request->all(), [
             'name' => 'required',
             'slug' => 'required|unique:brands'
-        ]); 
+        ]);
 
-        if($Validator->passes()) {
+        if($validator->passes()) {
             $brand = new Brand();
             $brand->name = $request->name;
             $brand->slug = $request->slug;
             $brand->status = $request->status;
             $brand->save();
 
+            session()->flash('success', 'Xuất sứ được tạo thành công.');
+
             return response()->json([
-                'status' => false,
-                'message' => 'Brand added successfully'
+                'status' => true,
+                'message' => 'Xuất sứ được tạo thành công.'
             ]);
 
         } else {
             return response()->json([
                 'status' => false,
-                'errors' => $Validator->errors()
+                'errors' => $validator->errors()
             ]);
         }
     }
@@ -56,7 +58,7 @@ class BrandController extends Controller
         $brand = Brand::find($id);
 
         if(empty($brand)) {
-            session()->flash('error', 'Record not found');
+            session()->flash('error', 'Không tìm thấy bản ghi');
             return redirect()->route('brands.index');
         }
 
@@ -69,12 +71,12 @@ class BrandController extends Controller
         $brand = Brand::find($id);
 
         if(empty($brand)) {
-            session()->flash('error', 'brand not found');
+            session()->flash('error', 'Không tìm thấy xuất sứ.');
 
             return response()->json([
                 'status' => false,
                 'notFound' => true,
-                'message' => 'brand not found'
+                'message' => 'Không tìm thấy xuất sứ.'
             ]);
         }
 
@@ -89,40 +91,39 @@ class BrandController extends Controller
             $brand->status = $request->status;
             $brand->save();
 
-            session()->flash('success', 'brand updated successfully.');
+            session()->flash('success', 'Xuất sứ được cập nhật thành công.');
 
             return response()->json([
                 'status' => true,
-                'message' => 'brand updated successfully.'
-            ]); 
+                'message' => 'Xuất sứ được cập nhật thành công.'
+            ]);
         } else {
             return response()->json([
                 'status' => false,
                 'errors' => $validator->errors()
             ]);
         }
-        
+
     }
 
     public function delete($id) {
         $brand = Brand::find($id);
 
         if(empty($brand)) {
-            session()->flash('error', 'brand not found');
+            session()->flash('error', 'Không tìm thấy xuất sứ.');
             return response()->json([
                 'status' => true,
-                'message' => 'brand not found'
+                'message' => 'Không tìm thấy xuất sứ.'
             ]);
-            // return redirect()->route('categories.index');
         }
 
         $brand->delete();
 
-        session()->flash('success', 'brand deleted successfully');
+        session()->flash('success', 'Xuất sứ được xóa thành công.');
 
         return response()->json([
             'status' => true,
-            'message' => 'brand deleted successfully'
+            'message' => 'Xuất sứ được xóa thành công.'
         ]);
     }
 }

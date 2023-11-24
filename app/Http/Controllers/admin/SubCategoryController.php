@@ -16,7 +16,7 @@ class SubCategoryController extends Controller
                 ->leftJoin('categories', 'categories.id', 'sub_categories.category_id');
 
         if(!empty($request->get('keyword'))) {
-            $subCategories = $subCategories->where('sub_categories.name', 'like' , '%' . $request->get('keyword') . '%'); 
+            $subCategories = $subCategories->where('sub_categories.name', 'like' , '%' . $request->get('keyword') . '%');
             $subCategories = $subCategories->orWhere('categories.name', 'like' , '%' . $request->get('keyword') . '%');
         }
 
@@ -34,7 +34,7 @@ class SubCategoryController extends Controller
     public function store(Request $request) {
         $validator = Validator::make($request->all(), [
             'name' => 'required',
-            'slug' => 'required|unique:sub-categories',
+            'slug' => 'required|unique:sub_categories',
             'category' => 'required',
             'status' => 'required'
         ]);
@@ -44,14 +44,15 @@ class SubCategoryController extends Controller
             $subCategory->name = $request->name;
             $subCategory->slug = $request->slug;
             $subCategory->status = $request->status;
+            $subCategory->showHome = $request->showHome;
             $subCategory->category_id = $request->category;
             $subCategory->save();
 
-            session()->flash('success', 'Sub Category created successfully');
+            session()->flash('success', 'Danh mục phụ được tạo thành công.');
 
             return response([
                 'status' => true,
-                'message' => 'Sub Category created successfully'
+                'message' => 'Danh mục phụ được tạo thành công.'
             ]);
 
         } else {
@@ -66,7 +67,7 @@ class SubCategoryController extends Controller
 
         $subCategory = SubCategory::find($id);
         if(empty($subCategory)) {
-            session()->flash('error', 'Record not found');
+            session()->flash('error', 'Không tìm thấy bản ghi.');
             return redirect()->route('sub-categories.index');
         }
 
@@ -78,9 +79,9 @@ class SubCategoryController extends Controller
 
     public function update($id, Request $request) {
         $subCategory = SubCategory::find($id);
-        
+
         if(empty($subCategory)) {
-            session()->flash('error', 'Record not found');
+            session()->flash('error', 'Không tìm thấy bản ghi');
             return response([
                 'status' => false,
                 'notFound' => true
@@ -98,14 +99,15 @@ class SubCategoryController extends Controller
             $subCategory->name = $request->name;
             $subCategory->slug = $request->slug;
             $subCategory->status = $request->status;
+            $subCategory->showHome = $request->showHome;
             $subCategory->category_id = $request->category;
             $subCategory->save();
 
-            session()->flash('success', 'Sub Category updated successfully');
+            session()->flash('success', 'Danh mục phụ được cập nhật thành công.');
 
             return response([
                 'status' => true,
-                'message' => 'Sub Category created successfully'
+                'message' => 'Danh mục phụ được cập nhật thành công.'
             ]);
 
         } else {
@@ -120,20 +122,20 @@ class SubCategoryController extends Controller
         $subCategory = SubCategory::find($id);
 
         if(empty($subCategory)) {
-            session()->flash('error', 'Sub Category not found');
+            session()->flash('error', 'Không tìm thấy danh mục phụ.');
             return response()->json([
                 'status' => true,
-                'message' => 'Sub Category not found'
+                'message' => 'Không tìm thấy danh mục phụ.'
             ]);
         }
 
         $subCategory->delete();
 
-        session()->flash('success', 'Sub Category deleted successfully');
+        session()->flash('success', 'Danh mục phụ được xóa thành công.');
 
         return response()->json([
             'status' => true,
-            'message' => 'Sub Category deleted successfully'
+            'message' => 'Danh mục phụ được xóa thành công.'
         ]);
     }
 }

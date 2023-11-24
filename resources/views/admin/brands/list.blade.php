@@ -5,14 +5,14 @@
 
 @section('content')
     <!-- Content Header (Page header) -->
-    <section class="content-header">					
+    <section class="content-header">
         <div class="container-fluid my-2">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Brands</h1>
+                    <h1>Xuất sứ</h1>
                 </div>
                 <div class="col-sm-6 text-right">
-                    <a href="{{ route('brands.create') }}" class="btn btn-primary">New Brands</a>
+                    <a href="{{ route('brands.create') }}" class="btn btn-primary">Tạo xuất sứ</a>
                 </div>
             </div>
         </div>
@@ -31,8 +31,8 @@
                         </div>
                         <div class="card-tools">
                             <div class="input-group input-group" style="width: 250px;">
-                                <input type="text" value="{{ Request::get('keyword') }}" name="keyword" class="form-control float-right" placeholder="Search">
-            
+                                <input type="text" value="{{ Request::get('keyword') }}" name="keyword" class="form-control float-right" placeholder="Tìm kiếm">
+
                                 <div class="input-group-append">
                                   <button type="submit" class="btn btn-default">
                                     <i class="fas fa-search"></i>
@@ -40,19 +40,18 @@
                                 </div>
                               </div>
                         </div>
-                    
                 </div>
             </form>
 
-                <div class="card-body table-responsive p-0">								
+                <div class="card-body table-responsive p-0">
                     <table class="table table-hover text-nowrap">
                         <thead>
                             <tr>
                                 <th width="60">ID</th>
-                                <th>Name</th>
+                                <th>Tên</th>
                                 <th>Slug</th>
-                                <th width="100">Status</th>
-                                <th width="100">Action</th>
+                                <th width="100">Trạng thái</th>
+                                <th width="100">Hành động</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -89,12 +88,12 @@
                                 @endforeach
                             @else
                                 <tr>
-                                    <td colspan="5">Records not found</td>
+                                    <td colspan="5">Không tìm thấy bản ghi</td>
                                 </tr>
                             @endif
-                            
+
                         </tbody>
-                    </table>										
+                    </table>
                 </div>
                 <div class="card-footer clearfix">
                     {{ $brands->links() }}
@@ -111,20 +110,20 @@
         function deleteBrand(id) {
             var url = '{{ route("brands.delete", "ID") }}';
             var newUrl = url.replace("ID", id);
-            
-            if(confirm("Are you sure you want to delete")) {
+
+            if(confirm("Bạn có muốn xóa không")) {
                 $.ajax({
                 url: newUrl,
                 type: 'delete',
                 data: {},
                 dataType: 'json',
                 headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') 
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
                 success: function(response) {
                     if (response["status"]) {
 						window.location.href="{{ route('brands.index') }}"
-                    } 
+                    }
                 }
             });
             }

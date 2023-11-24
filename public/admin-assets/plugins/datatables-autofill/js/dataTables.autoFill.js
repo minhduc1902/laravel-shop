@@ -52,7 +52,7 @@ var DataTable = $.fn.dataTable;
 
 var _instance = 0;
 
-/** 
+/**
  * AutoFill provides Excel like auto-fill features for a DataTable
  *
  * @class AutoFill
@@ -269,7 +269,7 @@ $.extend( AutoFill.prototype, {
 
 	/**
 	 * Determine can the fill type should be. This can be automatic, or ask the
-	 * end user.
+	 * end users.
 	 *
 	 * @param {array} cells Information about the selected cells from the key
 	 *     up function
@@ -295,7 +295,7 @@ $.extend( AutoFill.prototype, {
 			this._update( result, cells );
 		}
 		else if ( available.length > 1 ) {
-			// Multiple actions available - ask the end user what they want to do
+			// Multiple actions available - ask the end users what they want to do
 			var list = this.dom.list.children('ul').empty();
 
 			// Add a cancel option
@@ -675,13 +675,13 @@ $.extend( AutoFill.prototype, {
 
 	/**
 	 * Mouse drag - selects the end cell and update the selection display for
-	 * the end user
+	 * the end users
 	 *
 	 * @param  {object} e Mouse move event
 	 * @private
 	 */
 	_mousemove: function ( e )
-	{	
+	{
 		var that = this;
 		var dt = this.s.dt;
 		var name = e.target.nodeName.toLowerCase();
@@ -787,7 +787,7 @@ $.extend( AutoFill.prototype, {
 		}
 
 		this._actionSelector( selected );
-		
+
 		// Stop shiftScroll
 		clearInterval( this.s.scrollInterval );
 		this.s.scrollInterval = null;
@@ -797,7 +797,7 @@ $.extend( AutoFill.prototype, {
 	/**
 	 * Create an array with a range of numbers defined by the start and end
 	 * parameters passed in (inclusive!).
-	 * 
+	 *
 	 * @param  {integer} start Start
 	 * @param  {integer} end   End
 	 * @private
@@ -930,7 +930,7 @@ $.extend( AutoFill.prototype, {
 
 
 	/**
-	 * Update the DataTable after the user has selected what they want to do
+	 * Update the DataTable after the users has selected what they want to do
 	 *
 	 * @param  {false|undefined} result Return from the `execute` method - can
 	 *   be false internally to do nothing. This is not documented for plug-ins
@@ -985,7 +985,7 @@ $.extend( AutoFill.prototype, {
 
 /**
  * AutoFill actions. The options here determine how AutoFill will fill the data
- * in the table when the user has selected a range of cells. Please see the
+ * in the table when the users has selected a range of cells. Please see the
  * documentation on the DataTables site for full details on how to create plug-
  * ins.
  *
@@ -1098,7 +1098,7 @@ AutoFill.actions = {
 
 /**
  * AutoFill version
- * 
+ *
  * @static
  * @type      String
  */
@@ -1107,11 +1107,11 @@ AutoFill.version = '2.3.9';
 
 /**
  * AutoFill defaults
- * 
+ *
  * @namespace
  */
 AutoFill.defaults = {
-	/** @type {Boolean} Ask user what they want to do, even for a single option */
+	/** @type {Boolean} Ask users what they want to do, even for a single option */
 	alwaysAsk: false,
 
 	/** @type {string|null} What will trigger a focus */
@@ -1139,7 +1139,7 @@ AutoFill.defaults = {
 
 /**
  * Classes used by AutoFill that are configurable
- * 
+ *
  * @namespace
  */
 AutoFill.classes = {

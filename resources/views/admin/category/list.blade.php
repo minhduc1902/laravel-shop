@@ -9,10 +9,10 @@
         <div class="container-fluid my-2">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Categories</h1>
+                    <h1>Danh mục</h1>
                 </div>
                 <div class="col-sm-6 text-right">
-                    <a href="{{ route('categories.create') }}" class="btn btn-primary">New Category</a>
+                    <a href="{{ route('categories.create') }}" class="btn btn-primary">Tạo danh mục</a>
                 </div>
             </div>
         </div>
@@ -33,7 +33,7 @@
                         <div class="card-tools">
                             <div class="input-group input-group" style="width: 250px;">
                                 <input type="text" value="{{ Request::get('keyword') }}" name="keyword"
-                                    class="form-control float-right" placeholder="Search">
+                                    class="form-control float-right" placeholder="Tìm kiếm">
 
                                 <div class="input-group-append">
                                     <button type="submit" class="btn btn-default">
@@ -50,10 +50,10 @@
                         <thead>
                             <tr>
                                 <th width="60">ID</th>
-                                <th>Name</th>
+                                <th>Tên</th>
                                 <th>Slug</th>
-                                <th width="100">Status</th>
-                                <th width="100">Action</th>
+                                <th width="100">Trạng thái</th>
+                                <th width="100">Hành động</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -107,10 +107,9 @@
                                 @endforeach
                             @else
                                 <tr>
-                                    <td colspan="5">Records not found</td>
+                                    <td colspan="5">Không tìm thấy bản ghi</td>
                                 </tr>
                             @endif
-
                         </tbody>
                     </table>
                 </div>
@@ -130,7 +129,7 @@
             var url = '{{ route('categories.delete', 'ID') }}';
             var newUrl = url.replace("ID", id);
 
-            if (confirm("Are you sure you want to delete")) {
+            if (confirm("Bạn có muốn xóa không?")) {
                 $.ajax({
                     url: newUrl,
                     type: 'delete',

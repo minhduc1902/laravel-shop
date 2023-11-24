@@ -2121,7 +2121,7 @@ var FullCalendar = (function (exports) {
             var memberAdder = _a[_i];
             __assign(def, memberAdder(refined));
         }
-        // help out EventApi from having user modify props
+        // help out EventApi from having users modify props
         Object.freeze(def.ui.classNames);
         Object.freeze(def.extendedProps);
         return def;
@@ -3711,7 +3711,7 @@ var FullCalendar = (function (exports) {
             configurable: true
         });
         Object.defineProperty(EventApi.prototype, "classNames", {
-            // NOTE: user can't modify these because Object.freeze was called in event-def parsing
+            // NOTE: users can't modify these because Object.freeze was called in event-def parsing
             get: function () { return this._def.ui.classNames; },
             enumerable: false,
             configurable: true
@@ -4210,7 +4210,7 @@ var FullCalendar = (function (exports) {
         moreLinkText: 'more',
         noEventsText: 'No events to display',
     };
-    var RAW_EN_LOCALE = __assign(__assign({}, MINIMAL_RAW_EN_LOCALE), { 
+    var RAW_EN_LOCALE = __assign(__assign({}, MINIMAL_RAW_EN_LOCALE), {
         // Includes things we don't want other locales to inherit,
         // things that derive from other translatable strings.
         buttonHints: {
@@ -6789,7 +6789,7 @@ var FullCalendar = (function (exports) {
         var endMarker = framingRange.end;
         var instanceStarts = [];
         while (dayMarker < endMarker) {
-            var instanceStart 
+            var instanceStart
             // if everyday, or this particular day-of-week
             = void 0;
             // if everyday, or this particular day-of-week
@@ -8024,7 +8024,7 @@ var FullCalendar = (function (exports) {
     }(BaseComponent));
 
     /*
-    Detects when the user clicks on an event within a DateComponent
+    Detects when the users clicks on an event within a DateComponent
     */
     var EventClicking = /** @class */ (function (_super) {
         __extends(EventClicking, _super);
@@ -8059,7 +8059,7 @@ var FullCalendar = (function (exports) {
     }(Interaction));
 
     /*
-    Triggers events and adds/removes core classNames when the user's pointer
+    Triggers events and adds/removes core classNames when the users's pointer
     enters/leaves event-elements of a component.
     */
     var EventHovering = /** @class */ (function (_super) {
@@ -9564,7 +9564,7 @@ var FullCalendar = (function (exports) {
                     setRef(_this.props.elRef, el);
                 }
             };
-            // Triggered when the user clicks *anywhere* in the document, for the autoHide feature
+            // Triggered when the users clicks *anywhere* in the document, for the autoHide feature
             _this.handleDocumentMouseDown = function (ev) {
                 // only hide the popover if the click happened outside the popover
                 var target = getEventTargetViaRoot(ev);
@@ -10066,7 +10066,7 @@ var FullCalendar = (function (exports) {
         PointerDragging.prototype.shouldIgnoreMouse = function () {
             return ignoreMouseDepth || this.isTouchDragging;
         };
-        // can be called by user of this class, to cancel touch-based scrolling for the current drag
+        // can be called by users of this class, to cancel touch-based scrolling for the current drag
         PointerDragging.prototype.cancelTouchScroll = function () {
             if (this.isDragging) {
                 isWindowTouchMoveCancelled = true;
@@ -10578,9 +10578,9 @@ var FullCalendar = (function (exports) {
         AutoScroller.prototype.buildCaches = function (scrollStartEl) {
             return this.queryScrollEls(scrollStartEl).map(function (el) {
                 if (el === window) {
-                    return new WindowScrollGeomCache(false); // false = don't listen to user-generated scrolls
+                    return new WindowScrollGeomCache(false); // false = don't listen to users-generated scrolls
                 }
-                return new ElementScrollGeomCache(el, false); // false = don't listen to user-generated scrolls
+                return new ElementScrollGeomCache(el, false); // false = don't listen to users-generated scrolls
             });
         };
         AutoScroller.prototype.queryScrollEls = function (scrollStartEl) {
@@ -10616,7 +10616,7 @@ var FullCalendar = (function (exports) {
             _this.minDistance = 0;
             _this.touchScrollAllowed = true; // prevents drag from starting and blocks scrolling during drag
             _this.mirrorNeedsRevert = false;
-            _this.isInteracting = false; // is the user validly moving the pointer? lasts until pointerup
+            _this.isInteracting = false; // is the users validly moving the pointer? lasts until pointerup
             _this.isDragging = false; // is it INTENTFULLY dragging? lasts until after revert animation
             _this.isDelayEnded = false;
             _this.isDistanceSurpassed = false;
@@ -10996,7 +10996,7 @@ var FullCalendar = (function (exports) {
     }
 
     /*
-    Monitors when the user clicks on a specific date/time of a component.
+    Monitors when the users clicks on a specific date/time of a component.
     A pointerdown+pointerup on the same "hit" constitutes a click.
     */
     var DateClicking = /** @class */ (function (_super) {
@@ -11037,7 +11037,7 @@ var FullCalendar = (function (exports) {
     }(Interaction));
 
     /*
-    Tracks when the user selects a portion of time of a component,
+    Tracks when the users selects a portion of time of a component,
     constituted by a drag over date cells, with a possible delay at the beginning of the drag.
     */
     var DateSelecting = /** @class */ (function (_super) {
@@ -11052,7 +11052,7 @@ var FullCalendar = (function (exports) {
                     component.isValidDateDownEl(ev.origEvent.target);
                 // don't bother to watch expensive moves if component won't do selection
                 dragging.setIgnoreMove(!canSelect);
-                // if touch, require user to hold down
+                // if touch, require users to hold down
                 dragging.delay = ev.isTouch ? getComponentTouchDelay$1(component) : null;
             };
             _this.handleDragStart = function (ev) {
@@ -13816,7 +13816,7 @@ var FullCalendar = (function (exports) {
             if (!slatCoords) {
                 return null;
             }
-            return segs.map(function (seg, i) { return (createElement(NowIndicatorRoot, { isAxis: false, date: date, 
+            return segs.map(function (seg, i) { return (createElement(NowIndicatorRoot, { isAxis: false, date: date,
                 // key doesn't matter. will only ever be one
                 key: i }, function (rootElRef, classNames, innerElRef, innerContent) { return (createElement("div", { ref: rootElRef, className: ['fc-timegrid-now-indicator-line'].concat(classNames).join(' '), style: { top: slatCoords.computeDateTop(seg.start, date) } }, innerContent)); })); });
         };

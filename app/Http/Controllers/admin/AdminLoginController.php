@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Validator;
 
 class AdminLoginController extends Controller
 {
-    
+
     public function index() {
         return view('admin.login');
     }
@@ -23,7 +23,7 @@ class AdminLoginController extends Controller
         if($validator->passes()) {
 
             if (Auth::guard('admin')->attempt([
-                'email' => $request->email, 
+                'email' => $request->email,
                 'password' => $request->password], $request->get('remember'))) {
 
                     $admin = Auth::guard('admin')->user();
@@ -32,15 +32,12 @@ class AdminLoginController extends Controller
                         return redirect()->route('admin.dashboard');
                     } else {
                         Auth::guard('admin')->logout();
-                        return redirect()->route('admin.login')->with('error', 'You are not authorized to access admin panel.');
+                        return redirect()->route('admin.login')->with('error', 'Bạn không được phép truy cập bảng quản trị.');
                     }
-
                     return redirect()->route('admin.dashboard');
-
                 } else {
-                    return redirect()->route('admin.login')->with('error', 'Either Email or Password is incorrect');
+                    return redirect()->route('admin.login')->with('error', 'Email hoặc mật khẩu không chính xác');
                 }
-
         } else {
             return redirect()->route('admin.login')
                 ->withErrors($validator)
@@ -48,5 +45,5 @@ class AdminLoginController extends Controller
         }
     }
 
-    
+
 }

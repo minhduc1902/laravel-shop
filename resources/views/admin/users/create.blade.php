@@ -11,10 +11,10 @@
         <div class="container-fluid my-2">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Create Category</h1>
+                    <h1>Tạo tài khoản</h1>
                 </div>
                 <div class="col-sm-6 text-right">
-                    <a href="{{ route('categories.index') }}" class="btn btn-primary">Back</a>
+                    <a href="{{ route('users.index') }}" class="btn btn-primary">Trở về</a>
                 </div>
             </div>
         </div>
@@ -24,43 +24,48 @@
     <section class="content">
         <!-- Default box -->
         <div class="container-fluid">
-            <form action="" method="post" id="categoryForm" name="categoryForm">
+            <form action="" method="post" id="userForm" name="userForm">
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="name">Name</label>
+                                    <label for="name">Tên</label>
                                     <input type="text" name="name" id="name" class="form-control"
-                                        placeholder="Name">
+                                           placeholder="Tên">
                                 </div>
                                 <p></p>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="slug">Slug</label>
-                                    <input type="text" readonly name="slug" id="slug" class="form-control"
-                                        placeholder="Slug">
+                                    <label for="email">Email</label>
+                                    <input type="text" name="email" id="email" class="form-control"
+                                           placeholder="Email">
                                 </div>
                                 <p></p>
                             </div>
-                            
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="status">Status</label>
+                                    <label for="password">Mật khẩu</label>
+                                    <input type="password" name="password" id="password" class="form-control"
+                                           placeholder="Mật khẩu">
+                                </div>
+                                <p></p>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="phone">Số điện thoại</label>
+                                    <input type="text" name="phone" id="phone" class="form-control"
+                                           placeholder="Số điện thoại">
+                                </div>
+                                <p></p>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="status">Trạng thái</label>
                                     <select name="status" id="status" class="form-control">
                                         <option value="1">Active</option>
                                         <option value="0">Block</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label for="showHome">Show on Home</label>
-                                    <select name="showHome" id="showHome" class="form-control">
-                                        <option value="Yes">Yes</option>
-                                        <option value="No">No</option>
                                     </select>
                                 </div>
                             </div>
@@ -68,8 +73,8 @@
                     </div>
                 </div>
                 <div class="pb-5 pt-3">
-                    <button type="submit"class="btn btn-primary">Create</button>
-                    <a href="{{ route('categories.index') }}" class="btn btn-outline-dark ml-3">Cancel</a>
+                    <button type="submit" class="btn btn-primary">Tạo</button>
+                    <a href="{{ route('users.index') }}" class="btn btn-outline-dark ml-3">Hủy bỏ</a>
                 </div>
             </form>
         </div>
@@ -77,29 +82,31 @@
     </section>
     <!-- /.content -->
     <!-- /.content-wrapper -->
-    @endsection
+@endsection
 
 @section('js')
     <script>
-        $('#categoryForm').submit(function(event) {
+        $('#userForm').submit(function (event) {
             event.preventDefault();
             var element = $(this);
             $("button[type=submit]").prop('disabled', true);
 
             $.ajax({
-                url: '{{ route('categories.store') }}',
+                url: '{{ route('users.store') }}',
                 type: 'post',
                 data: element.serializeArray(),
                 dataType: 'json',
-                success: function(response) {
+                success: function (response) {
                     $("button[type=submit]").prop('disabled', false);
                     if (response["status"] == true) {
 
-						window.location.href="{{ route('categories.index') }}"
+                        window.location.href = "{{ route('users.index') }}"
 
                         $('#name').removeClass('is-invalid').siblings('p').removeClass(
                             'invalid-feedback').html("");
-                        $('#slug').removeClass('is-invalid').siblings('p').removeClass(
+                        $('#email').removeClass('is-invalid').siblings('p').removeClass(
+                            'invalid-feedback').html("");
+                        $('#phone').removeClass('is-invalid').siblings('p').removeClass(
                             'invalid-feedback').html("");
                     } else {
                         var errors = response['errors'];
@@ -111,34 +118,25 @@
                                 'invalid-feedback').html("");
                         }
 
-                        if (errors['slug']) {
-                            $('#slug').addClass('is-invalid').siblings('p').addClass('invalid-feedback')
-                                .html(errors['slug']);
+                        if (errors['email']) {
+                            $('#email').addClass('is-invalid').siblings('p').addClass('invalid-feedback')
+                                .html(errors['email']);
                         } else {
-                            $('#slug').removeClass('is-invalid').siblings('p').removeClass(
+                            $('#email').removeClass('is-invalid').siblings('p').removeClass(
+                                'invalid-feedback').html("");
+                        }
+
+                        if (errors['phone']) {
+                            $('#phone').addClass('is-invalid').siblings('p').addClass('invalid-feedback')
+                                .html(errors['phone']);
+                        } else {
+                            $('#phone').removeClass('is-invalid').siblings('p').removeClass(
                                 'invalid-feedback').html("");
                         }
                     }
                 },
-                error: function(jqXHR, exception) {
+                error: function (jqXHR, exception) {
                     console.log('Bug');
-                }
-            });
-        });
-
-        $("#name").change(function() {
-			element = $(this);
-            $("button[type=submit]").prop('disabled', true); 
-            $.ajax({
-                url: '{{ route("getSlug") }}',
-                type: 'get',
-                data: {title: element.val()},
-                dataType: 'json',
-                success: function(response) {
-                    $("button[type=submit]").prop('disabled', false);
-					if(response["status"] == true) {
-						$("#slug").val(response["slug"]);
-					}
                 }
             });
         });
