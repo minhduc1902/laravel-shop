@@ -161,7 +161,7 @@
         }
 
         function deleteItem(rowId) {
-            if(confirm("Are you sure you want to delete?")) {
+            if(confirm("Bạn có muốn xóa không?")) {
                 $.ajax({
                     url: '{{ route("front.deleteItem.cart") }}',
                     type: 'post',

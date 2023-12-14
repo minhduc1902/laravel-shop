@@ -108,7 +108,7 @@
                                                    class="form-control" placeholder="Compare Price"
                                                    value="{{ $product->compare_price }}">
                                             <p class="text-muted mt-3">
-                                                Để hiển thị mức giá giảm, hãy chuyển giá gốc của sản phẩm vào So sánh theo giá. Nhập giá trị thấp hơn vào Giá.                                            </p>
+                                                Để hiển thị mức giá giảm, hãy chuyển mức giá ban đầu của sản phẩm vào mức giá cũ. Nhập giá trị thấp hơn vào giá.                                         </p>
                                         </div>
                                     </div>
                                 </div>

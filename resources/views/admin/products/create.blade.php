@@ -86,11 +86,11 @@
                                     </div>
                                     <div class="col-md-12">
                                         <div class="mb-3">
-                                            <label for="compare_price">So sánh ở mức giá</label>
+                                            <label for="compare_price">Giá cũ</label>
                                             <input type="text" name="compare_price" id="compare_price"
                                                    class="form-control" placeholder="Compare Price">
                                             <p class="text-muted mt-3">
-                                                Để hiển thị mức giá giảm, hãy chuyển giá ban đầu của sản phẩm sang so sánh theo giá. Nhập giá trị thấp hơn vào <Giá class=""></Giá>                                            </p>
+                                                Để hiển thị mức giá giảm, hãy chuyển mức giá ban đầu của sản phẩm vào mức giá cũ. Nhập giá trị thấp hơn vào giá.                                         </p>
                                         </div>
                                     </div>
                                 </div>

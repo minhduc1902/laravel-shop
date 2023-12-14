@@ -21,20 +21,24 @@
                         <div class="carousel-inner bg-light">
                             @if ($product->product_images)
                                 @foreach ($product->product_images as $key => $productImage)
-                                    <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
-                                        <img class="w-100 h-100"
-                                             src="{{ asset('uploads/product/large/' . $productImage->image) }}"
-                                             alt="Image">
-                                    </div>
+                                    @if (!empty($productImage->image))
+                                        <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
+                                            <img class="w-100 h-100"
+                                                 src="{{ asset('uploads/product/large/' . $productImage->image) }}"
+                                                 alt="Image">
+                                        </div>
+                                    @endif
                                 @endforeach
                             @endif
                         </div>
-                        <a class="carousel-control-prev" href="#product-carousel" data-bs-slide="prev">
-                            <i class="fa fa-2x fa-angle-left text-dark"></i>
-                        </a>
-                        <a class="carousel-control-next" href="#product-carousel" data-bs-slide="next">
-                            <i class="fa fa-2x fa-angle-right text-dark"></i>
-                        </a>
+                        @if (!empty($productImage->image))
+                            <a class="carousel-control-prev" href="#product-carousel" data-bs-slide="prev">
+                                <i class="fa fa-2x fa-angle-left text-dark"></i>
+                            </a>
+                            <a class="carousel-control-next" href="#product-carousel" data-bs-slide="next">
+                                <i class="fa fa-2x fa-angle-right text-dark"></i>
+                            </a>
+                        @endif
                     </div>
                 </div>
                 <div class="col-md-7">

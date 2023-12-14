@@ -30,7 +30,7 @@
                                         <strong>{{ $order->first_name.' '.$order->last_name }}</strong><br>
                                         {{ $order->address }}<br>
                                         {{ $order->country }}<br>
-                                        Phone: {{ $order->mobile }}<br>
+                                        Số điện thoại: {{ $order->mobile }}<br>
                                         Email: {{ $order->email }}
                                     </address>
                                 </div>
