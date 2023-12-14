@@ -1,1 +1,1 @@
-chạy online_shop.sql trước
+chạy file sql online_shop.sql trước để xem chi tiết
