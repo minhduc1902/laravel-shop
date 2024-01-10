@@ -1,12 +1,6 @@
 @extends('admin.components.app')
 
-@section('css')
-@endsection
-
 @section('content')
-    <!-- Navbar -->
-    <!-- Content Wrapper. Contains page content -->
-    <!-- Content Header (Page header) -->
     <section class="content-header">
         <div class="container-fluid my-2">
             <div class="row mb-2">
@@ -18,11 +12,8 @@
                 </div>
             </div>
         </div>
-        <!-- /.container-fluid -->
     </section>
-    <!-- Main content -->
     <section class="content">
-        <!-- Default box -->
         <div class="container-fluid">
             <form action="" method="post" id="userForm" name="userForm">
                 <div class="card">
@@ -58,14 +49,13 @@
                                     <input type="text" name="phone" id="phone" class="form-control"
                                            placeholder="Số điện thoại">
                                 </div>
-                                <p></p>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="status">Trạng thái</label>
                                     <select name="status" id="status" class="form-control">
-                                        <option value="1">Active</option>
-                                        <option value="0">Block</option>
+                                        <option value="1">Mở</option>
+                                        <option value="0">Đóng</option>
                                     </select>
                                 </div>
                             </div>
@@ -78,10 +68,7 @@
                 </div>
             </form>
         </div>
-        <!-- /.card -->
     </section>
-    <!-- /.content -->
-    <!-- /.content-wrapper -->
 @endsection
 
 @section('js')
@@ -106,8 +93,6 @@
                             'invalid-feedback').html("");
                         $('#email').removeClass('is-invalid').siblings('p').removeClass(
                             'invalid-feedback').html("");
-                        $('#phone').removeClass('is-invalid').siblings('p').removeClass(
-                            'invalid-feedback').html("");
                     } else {
                         var errors = response['errors'];
                         if (errors['name']) {
@@ -123,14 +108,6 @@
                                 .html(errors['email']);
                         } else {
                             $('#email').removeClass('is-invalid').siblings('p').removeClass(
-                                'invalid-feedback').html("");
-                        }
-
-                        if (errors['phone']) {
-                            $('#phone').addClass('is-invalid').siblings('p').addClass('invalid-feedback')
-                                .html(errors['phone']);
-                        } else {
-                            $('#phone').removeClass('is-invalid').siblings('p').removeClass(
                                 'invalid-feedback').html("");
                         }
                     }

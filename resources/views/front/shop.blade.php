@@ -64,14 +64,14 @@
                     </div>
                     <div class="card">
                         <div class="card-body">
-                            @if ($brands->isNotEmpty())
-                                @foreach ($brands as $brand)
+                            @if ($origins->isNotEmpty())
+                                @foreach ($origins as $origin)
                                     <div class="form-check mb-2">
-                                        <input {{ (in_array($brand->id, $brandsArray)) ? 'checked' : '' }}
-                                            class="form-check-input brand-label" name="brand[]" type="checkbox"
-                                            value="{{ $brand->id }}" id="brand-{{ $brand->id }}">
-                                        <label class="form-check-label" for="brand-{{ $brand->id }}">
-                                            {{ $brand->name }}
+                                        <input {{ (in_array($origin->id, $originsArray)) ? 'checked' : '' }}
+                                            class="form-check-input origin-label" name="origin[]" type="checkbox"
+                                            value="{{ $origin->id }}" id="origin-{{ $origin->id }}">
+                                        <label class="form-check-label" for="origin-{{ $origin->id }}">
+                                            {{ $origin->name }}
                                         </label>
                                     </div>
                                 @endforeach
@@ -143,6 +143,8 @@
                                     </div>
                                 </div>
                             @endforeach
+                        @else
+                            <div class="text-center">Không tìm thấy sản phẩm nào khớp với lựa chọn của bạn.</div>
                         @endif
                         <div class="col-md-12 pt-5">
                             {{ $products->withQueryString()->links() }}
@@ -156,7 +158,7 @@
 
 @section('js')
     <script>
-        $(".brand-label").change(function() {
+        $(".origin-label").change(function() {
             apply_filters();
         });
 
@@ -165,11 +167,11 @@
         });
 
         function apply_filters() {
-            var brands = [];
+            var origins = [];
 
-            $(".brand-label").each(function() {
+            $(".origin-label").each(function() {
                 if ($(this).is(":checked") == true) {
-                    brands.push($(this).val());
+                    origins.push($(this).val());
                 }
             });
 
@@ -182,18 +184,15 @@
                 url += '&search=' + keyword;
             }
 
-            //Brand filter
-            if (brands.length > 0) {
-                url += '&brand=' + brands.toString();
+            //Origin filter
+            if (origins.length > 0) {
+                url += '&origin=' + origins.toString();
             }
 
             //Sorting filter
             url += '&sort=' + $("#sort").val();
 
-
             window.location.href = url;
-            // window.location.href = url + '&brand=' + brands.toString();
         }
-
     </script>
 @endsection

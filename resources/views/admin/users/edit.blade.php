@@ -1,12 +1,6 @@
 @extends('admin.components.app')
 
-@section('css')
-@endsection
-
 @section('content')
-    <!-- Navbar -->
-    <!-- Content Wrapper. Contains page content -->
-    <!-- Content Header (Page header) -->
     <section class="content-header">
         <div class="container-fluid my-2">
             <div class="row mb-2">
@@ -18,11 +12,8 @@
                 </div>
             </div>
         </div>
-        <!-- /.container-fluid -->
     </section>
-    <!-- Main content -->
     <section class="content">
-        <!-- Default box -->
         <div class="container-fluid">
             <form action="{{ route('users.update', $user->id) }}" method="post" id="userForm" name="userForm">
                 <div class="card">
@@ -79,10 +70,7 @@
                 </div>
             </form>
         </div>
-        <!-- /.card -->
     </section>
-    <!-- /.content -->
-    <!-- /.content-wrapper -->
     </div>
 @endsection
 
@@ -106,7 +94,7 @@
 
                         $('#name').removeClass('is-invalid').siblings('p').removeClass(
                             'invalid-feedback').html("");
-                        $('#slug').removeClass('is-invalid').siblings('p').removeClass(
+                        $('#email').removeClass('is-invalid').siblings('p').removeClass(
                             'invalid-feedback').html("");
                     } else {
                         if(response['notFound'] == true) {
@@ -122,11 +110,11 @@
                                 'invalid-feedback').html("");
                         }
 
-                        if (errors['slug']) {
-                            $('#slug').addClass('is-invalid').siblings('p').addClass('invalid-feedback')
-                                .html(errors['slug']);
+                        if (errors['email']) {
+                            $('#email').addClass('is-invalid').siblings('p').addClass('invalid-feedback')
+                                .html(errors['email']);
                         } else {
-                            $('#slug').removeClass('is-invalid').siblings('p').removeClass(
+                            $('#email').removeClass('is-invalid').siblings('p').removeClass(
                                 'invalid-feedback').html("");
                         }
                     }

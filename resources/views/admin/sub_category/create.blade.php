@@ -1,8 +1,5 @@
 @extends('admin.components.app')
 
-@section('css')
-@endsection
-
 @section('content')
     <section class="content-header">
         <div class="container-fluid my-2">
@@ -15,11 +12,8 @@
                 </div>
             </div>
         </div>
-        <!-- /.container-fluid -->
     </section>
-    <!-- Main content -->
     <section class="content">
-        <!-- Default box -->
         <div class="container-fluid">
             <form action="" method="post" name="subCategoryForm" id="subCategoryForm">
                 <div class="card">
@@ -57,8 +51,8 @@
                                 <div class="mb-3">
                                     <label for="status">Trạng thái</label>
                                     <select name="status" id="status" class="form-control">
-                                        <option value="1">Active</option>
-                                        <option value="0">Block</option>
+                                        <option value="1">Mở</option>
+                                        <option value="0">Đóng</option>
                                     </select>
                                     <p></p>
                                 </div>
@@ -67,8 +61,8 @@
                                 <div class="mb-3">
                                     <label for="showHome">Hiển thị ở trang chủ</label>
                                     <select name="showHome" id="showHome" class="form-control">
-                                        <option value="Yes">Yes</option>
-                                        <option value="No">No</option>
+                                        <option value="Yes">Có</option>
+                                        <option value="No">Không</option>
                                     </select>
                                 </div>
                             </div>
@@ -80,12 +74,9 @@
                     <a href="{{ route('sub-categories.index') }}" class="btn btn-outline-dark ml-3">Hủy bỏ</a>
                 </div>
             </form>
-
         </div>
-        <!-- /.card -->
     </section>
-    <!-- /.content -->
-    @endsection
+@endsection
 
 @section('js')
 <script>
@@ -106,34 +97,20 @@
 
                     $('#name').removeClass('is-invalid').siblings('p').removeClass(
                         'invalid-feedback').html("");
-                    $('#slug').removeClass('is-invalid').siblings('p').removeClass(
-                        'invalid-feedback').html("");
                     $('#category').removeClass('is-invalid').siblings('p').removeClass(
                         'invalid-feedback').html("");
                 } else {
                     var errors = response['errors'];
                     if (errors['name']) {
-                        $('#name').addClass('is-invalid').siblings('p').addClass('invalid-feedback')
-                            .html(errors['name']);
+                        $('#name').addClass('is-invalid').siblings('p').addClass('invalid-feedback').html(errors['name']);
                     } else {
-                        $('#name').removeClass('is-invalid').siblings('p').removeClass(
-                            'invalid-feedback').html("");
-                    }
-
-                    if (errors['slug']) {
-                        $('#slug').addClass('is-invalid').siblings('p').addClass('invalid-feedback')
-                            .html(errors['slug']);
-                    } else {
-                        $('#slug').removeClass('is-invalid').siblings('p').removeClass(
-                            'invalid-feedback').html("");
+                        $('#name').removeClass('is-invalid').siblings('p').removeClass('invalid-feedback').html("");
                     }
 
                     if (errors['category']) {
-                        $('#category').addClass('is-invalid').siblings('p').addClass('invalid-feedback')
-                            .html(errors['slug']);
+                        $('#category').addClass('is-invalid').siblings('p').addClass('invalid-feedback').html(errors['category']);
                     } else {
-                        $('#category').removeClass('is-invalid').siblings('p').removeClass(
-                            'invalid-feedback').html("");
+                        $('#category').removeClass('is-invalid').siblings('p').removeClass('invalid-feedback').html("");
                     }
                 }
             },

@@ -1,12 +1,6 @@
 @extends('admin.components.app')
 
-@section('css')
-@endsection
-
 @section('content')
-    <!-- Navbar -->
-    <!-- Content Wrapper. Contains page content -->
-    <!-- Content Header (Page header) -->
     <section class="content-header">
         <div class="container-fluid my-2">
             <div class="row mb-2">
@@ -18,7 +12,6 @@
                 </div>
             </div>
         </div>
-        <!-- /.container-fluid -->
     </section>
     <!-- Main content -->
     <section class="content">
@@ -49,8 +42,8 @@
                                 <div class="mb-3">
                                     <label for="status">Trạng thái</label>
                                     <select name="status" id="status" class="form-control">
-                                        <option value="1">Active</option>
-                                        <option value="0">Block</option>
+                                        <option value="1">Mở</option>
+                                        <option value="0">Đóng</option>
                                     </select>
                                 </div>
                             </div>
@@ -59,8 +52,8 @@
                                 <div class="mb-3">
                                     <label for="showHome">Show on Home</label>
                                     <select name="showHome" id="showHome" class="form-control">
-                                        <option value="Yes">Yes</option>
-                                        <option value="No">No</option>
+                                        <option value="Yes">Có</option>
+                                        <option value="No">Không</option>
                                     </select>
                                 </div>
                             </div>
@@ -94,12 +87,9 @@
                 success: function(response) {
                     $("button[type=submit]").prop('disabled', false);
                     if (response["status"] == true) {
-
 						window.location.href="{{ route('categories.index') }}"
 
                         $('#name').removeClass('is-invalid').siblings('p').removeClass(
-                            'invalid-feedback').html("");
-                        $('#slug').removeClass('is-invalid').siblings('p').removeClass(
                             'invalid-feedback').html("");
                     } else {
                         var errors = response['errors'];
@@ -108,14 +98,6 @@
                                 .html(errors['name']);
                         } else {
                             $('#name').removeClass('is-invalid').siblings('p').removeClass(
-                                'invalid-feedback').html("");
-                        }
-
-                        if (errors['slug']) {
-                            $('#slug').addClass('is-invalid').siblings('p').addClass('invalid-feedback')
-                                .html(errors['slug']);
-                        } else {
-                            $('#slug').removeClass('is-invalid').siblings('p').removeClass(
                                 'invalid-feedback').html("");
                         }
                     }

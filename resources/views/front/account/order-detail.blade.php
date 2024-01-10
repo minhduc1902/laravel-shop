@@ -25,22 +25,17 @@
                         </div>
 
                         <div class="card-body pb-0">
-                            <!-- Info -->
                             <div class="card card-sm">
                                 <div class="card-body bg-light mb-3">
                                     <div class="row">
                                         <div class="col-6 col-lg-4">
-                                            <!-- Heading -->
                                             <h6 class="heading-xxxs text-muted">Mã đơn hàng:</h6>
-                                            <!-- Text -->
                                             <p class="mb-lg-0 fs-sm fw-bold">
                                                 {{ $order->id }}
                                             </p>
                                         </div>
                                         <div class="col-6 col-lg-4">
-                                            <!-- Heading -->
                                             <h6 class="heading-xxxs text-muted">Trạng thái:</h6>
-                                            <!-- Text -->
                                             <p class="mb-0 fs-sm fw-bold">
                                                 @if($order->status == 'pending')
                                                     <span class="badge bg-danger">Chưa giải quyết</span>
@@ -54,9 +49,7 @@
                                             </p>
                                         </div>
                                         <div class="col-6 col-lg-4">
-                                            <!-- Heading -->
                                             <h6 class="heading-xxxs text-muted">Tổng tiền:</h6>
-                                            <!-- Text -->
                                             <p class="mb-0 fs-sm fw-bold">
                                                 {{ number_format($order->grand_total) }} VNĐ
                                             </p>
@@ -65,27 +58,17 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="card-footer p-3">
-
-                            <!-- Heading -->
                             <h6 class="mb-7 h5 mt-4">Các mặt hàng đã đặt ({{ $orderItemsCount }})</h6>
-
-                            <!-- Divider -->
                             <hr class="my-3">
-
-                            <!-- List group -->
                             <ul>
                                 @foreach($orderItems as $item)
                                 <li class="list-group-item">
                                     <div class="row align-items-center">
                                         <div class="col-4 col-md-3 col-xl-2">
-                                            <!-- Image -->
-{{--                                            <a href="product.html"><img src="images/product-1.jpg" alt="..." class="img-fluid"></a>--}}
                                             @php
                                                 $productImage = getProductImage($item->product_id);
                                             @endphp
-
                                             @if (!empty($productImage->image))
                                                 <img class="img-fluid"
                                                      src="{{ asset('uploads/product/small/' . $productImage->image) }}">
@@ -95,9 +78,8 @@
                                             @endif
                                         </div>
                                         <div class="col">
-                                            <!-- Title -->
                                             <p class="mb-4 fs-sm fw-bold">
-                                                <a class="text-body" href="product.html">{{ $item->name }} x {{ $item->qty }}</a> <br>
+                                                <span class="text-body">{{ $item->name }} x {{ $item->qty }}</span> <br>
                                                 <span class="text-muted">{{ number_format($item->total) }} VNĐ</span>
                                             </p>
                                         </div>
@@ -108,20 +90,17 @@
                         </div>
                     </div>
 
-                    <div class="card card-lg mb-5 mt-3">
-                        <div class="card-body">
-                            <!-- Heading -->
-                            <h6 class="mt-0 mb-3 h5">Tổng đơn hàng</h6>
-
-                            <!-- List group -->
-                            <ul>
-                                <li class="list-group-item d-flex fs-lg fw-bold">
-                                    <span>Total</span>
-                                    <span class="ms-auto">{{ number_format($order->grand_total) }} VNĐ</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+{{--                    <div class="card card-lg mb-5 mt-3">--}}
+{{--                        <div class="card-body">--}}
+{{--                            <h6 class="mt-0 mb-3 h5">Tổng đơn hàng</h6>--}}
+{{--                            <ul>--}}
+{{--                                <li class="list-group-item d-flex fs-lg fw-bold">--}}
+{{--                                    <span>Total</span>--}}
+{{--                                    <span class="ms-auto">{{ number_format($order->grand_total) }} VNĐ</span>--}}
+{{--                                </li>--}}
+{{--                            </ul>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
                 </div>
             </div>
         </div>

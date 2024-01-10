@@ -1,8 +1,5 @@
 @extends('admin.components.app')
 
-@section('css')
-@endsection
-
 @section('content')
     <section class="content-header">
         <div class="container-fluid my-2">
@@ -15,11 +12,8 @@
                 </div>
             </div>
         </div>
-        <!-- /.container-fluid -->
     </section>
-    <!-- Main content -->
     <section class="content">
-        <!-- Default box -->
         <div class="container-fluid">
             @include('admin.message')
             <div class="card">
@@ -133,7 +127,6 @@
                 </div>
             </div>
         </div>
-        <!-- /.card -->
     </section>
 @endsection
 
@@ -146,19 +139,19 @@
             if (confirm("Bạn có muốn xóa không?")) {
                 $.ajax({
                     url: newUrl,
-                    type: 'DELETE', // Use all caps for consistency
+                    type: 'DELETE',
                     data: {},
                     dataType: 'json',
                     success: function(response) {
                         if (response && response.status) {
                             window.location.href = "{{ route('products.index') }}";
                         } else {
-                            alert('Xóa sản phẩm thất bại.'); // Notify the users about the failure
+                            alert('Xóa sản phẩm thất bại.');
                         }
                     },
                     error: function(xhr, status, error) {
                         alert(
-                        'Lỗi xảy ra trong lúc xóa sản phẩm. Vui lòng thử lại.'); // Notify the users about the error
+                        'Lỗi xảy ra trong lúc xóa sản phẩm. Vui lòng thử lại.');
                     }
                 });
             }

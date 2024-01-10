@@ -37,7 +37,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="email">Email</label>
-                                        <input value="{{ $user->email }}" type="text" name="email" id="email" placeholder="Nhập email của bạn"
+                                        <input readonly value="{{ $user->email }}" type="text" name="email" id="email" placeholder="Nhập email của bạn"
                                                class="form-control">
                                         <p></p>
                                     </div>
@@ -84,12 +84,6 @@
                             $("#name").addClass('is-invalid').siblings('p').html(errors.name).addClass('invalid-feedback');
                         } else {
                             $("#name").removeClass('is-invalid').siblings('p').html('').removeClass('invalid-feedback');
-                        }
-
-                        if(errors.email) {
-                            $("#email").addClass('is-invalid').siblings('p').html(errors.email).addClass('invalid-feedback');
-                        } else {
-                            $("#email").removeClass('is-invalid').siblings('p').html('').removeClass('invalid-feedback');
                         }
 
                         if(errors.phone) {

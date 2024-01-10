@@ -1,10 +1,6 @@
 @extends('admin.components.app')
 
-@section('css')
-@endsection
-
 @section('content')
-    <!-- Content Header (Page header) -->
     <section class="content-header">
         <div class="container-fluid my-2">
             <div class="row mb-2">
@@ -16,11 +12,9 @@
                 </div>
             </div>
         </div>
-        <!-- /.container-fluid -->
     </section>
-    <!-- Main content -->
+
     <section class="content">
-        <!-- Default box -->
         <div class="container-fluid">
             @include('admin.message')
             <div class="card">
@@ -118,9 +112,7 @@
                 </div>
             </div>
         </div>
-        <!-- /.card -->
     </section>
-    <!-- /.content -->
 @endsection
 
 @section('js')

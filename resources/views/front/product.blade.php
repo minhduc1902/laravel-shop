@@ -44,79 +44,37 @@
                 <div class="col-md-7">
                     <div class="bg-light right">
                         <h1>{{ $product->title }}</h1>
-                        <br>
+                        <div class="mb-2">Còn {{ $product->qty }} hàng</div>
                         @if ($product->compare_price > 0)
                             <h2 class="price text-secondary">
                                 <del>{{ number_format($product->compare_price) }} VNĐ</del>
                             </h2>
                         @endif
-                        <br>
                         <h2 class="price ">{{ number_format($product->price) }} VNĐ</h2>
+                        {!! $product->description !!}
                         <br>
-                        {!! $product->short_description !!}
                         @if($product->track_qty == 'Yes')
                             @if($product->qty > 0)
-                                <div class="product-action">
+                                <div class="product-action mt-2">
                                     <a class="btn btn-dark" href="javascript:void(0);"
                                        onclick="addToCart({{ $product->id }})">
                                         <i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng
                                     </a>
                                 </div>
                             @else
-                                <div class="product-action">
+                                <div class="product-action mt-2">
                                     <a class="btn btn-dark" href="javascript:void(0);">
                                         Hết hàng
                                     </a>
                                 </div>
                             @endif
                         @else
-                            <div class="product-action">
-                                <a class="btn btn-dark" href="javascript:void(0);"
-                                   onclick="addToCart({{ $product->id }})">
-                                    <i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng
+                            <div class="product-action mt-2">
+                                <a class="btn btn-dark" href="javascript:void(0);">
+                                    Cửa hàng chưa nhập sản phẩm này
                                 </a>
                             </div>
                         @endif
-
-                    </div>
-                </div>
-
-                <div class="col-md-12 mt-5">
-                    <div class="bg-light">
-                        <ul class="nav nav-tabs" id="myTab" role="tablist">
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link active" id="description-tab" data-bs-toggle="tab"
-                                        data-bs-target="#description" type="button" role="tab"
-                                        aria-controls="description"
-                                        aria-selected="true">Description
-                                </button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="shipping-tab" data-bs-toggle="tab"
-                                        data-bs-target="#shipping"
-                                        type="button" role="tab" aria-controls="shipping" aria-selected="false">Shipping
-                                    &
-                                    Returns
-                                </button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#reviews"
-                                        type="button" role="tab" aria-controls="reviews"
-                                        aria-selected="false">Reviews
-                                </button>
-                            </li>
-                        </ul>
-                        <div class="tab-content" id="myTabContent">
-                            <div class="tab-pane fade show active" id="description" role="tabpanel"
-                                 aria-labelledby="description-tab">
-                                {!! $product->description !!}
-                            </div>
-                            <div class="tab-pane fade" id="shipping" role="tabpanel" aria-labelledby="shipping-tab">
-                                {!! $product->shipping_returns !!}
-                            </div>
-                            <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -146,7 +104,6 @@
                                                  src="{{ asset('admin-assets/img/default-150x150.png') }}">
                                         @endif
                                     </a>
-
                                     <div class="product-action">
                                         <a class="btn btn-dark" href="javascript:void(0);"
                                            onclick="addToCart({{ $product->id }})">

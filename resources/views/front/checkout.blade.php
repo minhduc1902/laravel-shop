@@ -106,18 +106,12 @@
                                 <label for="payment_method_two" class="form_check_label">Chuyển khoản</label>
                             </div>
                             <div class="card-body p-0 d-none mt-3" id="card-payment-form">
-                                <label for="payment" class="mb-2">Chuyển tiền tới stk:
-                                    <strong>012345678912</strong></label>
-                                <br>
-                                <label for="">Ngân hàng: <strong>BIDV</strong></label>
-                                <br>
-                                <label for="">Nội dung chuyển khoản: <strong>Thanh toán đơn hàng</strong></label>
+                                <img src="{{ asset('front-assets/images/qr.jpg') }}" alt="">
                             </div>
                             <div class="pt-4">
                                 <button type="submit">Thanh toán</button>
                             </div>
                         </div>
-                        <!-- CREDIT CARD FORM ENDS HERE -->
                     </div>
                 </div>
             </form>

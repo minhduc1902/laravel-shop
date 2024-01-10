@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Brand;
+use App\Models\Origin;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\ProductImage;
@@ -29,9 +29,9 @@ class ProductController extends Controller
     public function create() {
         $data = [];
         $categories = Category::orderBy('name', 'ASC')->get();
-        $brands = Brand::orderBy('name', 'ASC')->get();
+        $origins = Origin::orderBy('name', 'ASC')->get();
         $data['categories'] = $categories;
-        $data['brands'] = $brands;
+        $data['origins'] = $origins;
         return view('admin.products.create', $data);
     }
 
@@ -61,9 +61,8 @@ class ProductController extends Controller
             $product->compare_price = $request->compare_price;
             $product->category_id = $request->category;
             $product->sub_category_id = $request->sub_category;
-            $product->brand_id = $request->brand;
+            $product->origin_id = $request->origin;
             $product->is_featured = $request->is_featured;
-            $product->short_description = $request->short_description;
             $product->sku = $request->sku;
             $product->track_qty = $request->track_qty;
             $product->qty = $request->qty;
@@ -134,12 +133,12 @@ class ProductController extends Controller
 
         $data = [];
         $categories = Category::orderBy('name', 'ASC')->get();
-        $brands = Brand::orderBy('name', 'ASC')->get();
+        $origins = Origin::orderBy('name', 'ASC')->get();
         $data['product'] = $product;
         $data['subCategories'] = $subCategories;
         $data['categories'] = $categories;
         $data['productImages'] = $productImages;
-        $data['brands'] = $brands;
+        $data['origins'] = $origins;
         return view('admin.products.edit', $data);
     }
 
@@ -169,9 +168,8 @@ class ProductController extends Controller
             $product->compare_price = $request->compare_price;
             $product->category_id = $request->category;
             $product->sub_category_id = $request->sub_category;
-            $product->brand_id = $request->brand;
+            $product->origin_id = $request->origin;
             $product->is_featured = $request->is_featured;
-            $product->short_description = $request->short_description;
             $product->sku = $request->sku;
             $product->track_qty = $request->track_qty;
             $product->qty = $request->qty;
@@ -226,7 +224,6 @@ class ProductController extends Controller
     }
 
     public function getProducts(Request $request) {
-
         $tempProduct = [];
         if($request->term != "") {
             $products = Product::where('title', 'like', '%'.$request->term.'%')->get();

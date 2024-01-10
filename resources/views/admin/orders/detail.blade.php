@@ -12,11 +12,8 @@
                 </div>
             </div>
         </div>
-        <!-- /.container-fluid -->
     </section>
-    <!-- Main content -->
     <section class="content">
-        <!-- Default box -->
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-9">
@@ -30,12 +27,10 @@
                                         <strong>{{ $order->first_name.' '.$order->last_name }}</strong><br>
                                         {{ $order->address }}<br>
                                         {{ $order->country }}<br>
-                                        Số điện thoại: {{ $order->mobile }}<br>
-                                        Email: {{ $order->email }}
+                                        <b>Số điện thoại:</b> {{ $order->mobile }}<br>
+                                        <b>Email:</b> {{ $order->email }}
                                     </address>
                                 </div>
-
-
                                 <div class="col-sm-4 invoice-col">
                                     <b>Mã đơn hàng:</b> {{ $order->id }}<br>
                                     <b>Tổng cộng:</b> {{ number_format($order->grand_total) }} VNĐ<br>
@@ -49,7 +44,8 @@
                                     @else
                                         <span class="text-warning">Đã hủy</span>
                                     @endif
-                                        <br>
+                                    <br>
+                                    <b>Ghi chú: </b>{{ $order->notes }}
                                 </div>
                             </div>
                         </div>
@@ -87,7 +83,6 @@
                 </div>
             </div>
         </div>
-        <!-- /.card -->
     </section>
 @endsection
 

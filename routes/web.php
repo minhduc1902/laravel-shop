@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\admin\AdminLoginController;
-use App\Http\Controllers\admin\BrandController;
+use App\Http\Controllers\admin\OriginController;
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\HomeController;
 use App\Http\Controllers\admin\ProductController;
@@ -62,9 +62,6 @@ Route::group(['prefix' => 'account'], function() {
     });
 });
 
-
-// Route::get('admin/login', [AdminLoginController::class, 'index'])->name('admin.login');
-
 Route::group(['prefix' => 'admin'], function () {
     Route::group(['middleware' => 'admin.guest'], function () {
         Route::get('/login', [AdminLoginController::class, 'index'])->name('admin.login');
@@ -120,13 +117,13 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/change-password', [SettingController::class, 'showChangePasswordForm'])->name('admin.showChangePasswordForm');
         Route::post('/process-change-password', [SettingController::class, 'processChangePassword'])->name('admin.processChangePassword');
 
-        Route::prefix('brands')->group(function () {
-            Route::get('/', [BrandController::class, 'index'])->name('brands.index');
-            Route::get('/create', [BrandController::class, 'create'])->name('brands.create');
-            Route::post('/store', [BrandController::class, 'store'])->name('brands.store');
-            Route::get('/edit/{id}', [BrandController::class, 'edit'])->name('brands.edit');
-            Route::put('/update/{id}', [BrandController::class, 'update'])->name('brands.update');
-            Route::delete('/delete/{id}', [BrandController::class, 'delete'])->name('brands.delete');
+        Route::prefix('origins')->group(function () {
+            Route::get('/', [OriginController::class, 'index'])->name('origins.index');
+            Route::get('/create', [OriginController::class, 'create'])->name('origins.create');
+            Route::post('/store', [OriginController::class, 'store'])->name('origins.store');
+            Route::get('/edit/{id}', [OriginController::class, 'edit'])->name('origins.edit');
+            Route::put('/update/{id}', [OriginController::class, 'update'])->name('origins.update');
+            Route::delete('/delete/{id}', [OriginController::class, 'delete'])->name('origins.delete');
         });
 
         Route::prefix('sub-categories')->group(function () {

@@ -20,7 +20,7 @@ return new class extends Migration
             $table->double('compare_price', 10, 2)->nullable();
             $table->foreignId('category_id')->constrained()->onDelete('cascade');
             $table->foreignId('sub_category_id')->nullable()->constrained()->onDelete('cascade');
-            $table->foreignId('brand_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignId('origin_id')->nullable()->constrained()->onDelete('cascade');
             $table->enum('id_featured', ['Yes', 'No'])->default('No');
             $table->string('sku');
             $table->string('barcode')->nullable();

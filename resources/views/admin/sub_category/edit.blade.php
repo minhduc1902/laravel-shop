@@ -1,8 +1,5 @@
 @extends('admin.components.app')
 
-@section('css')
-@endsection
-
 @section('content')
     <section class="content-header">
         <div class="container-fluid my-2">
@@ -15,11 +12,9 @@
                 </div>
             </div>
         </div>
-        <!-- /.container-fluid -->
     </section>
-    <!-- Main content -->
+
     <section class="content">
-        <!-- Default box -->
         <div class="container-fluid">
             <form action="" method="post" name="subCategoryForm" id="subCategoryForm">
                 <div class="card">
@@ -42,14 +37,14 @@
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="name">Tên</label>
-                                    <input type="text" value={{ $subCategory->name }} name="name" id="name" class="form-control" placeholder="Tên">
+                                    <input type="text" value="{{ $subCategory->name }}" name="name" id="name" class="form-control" placeholder="Tên">
                                     <p></p>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="slug">Slug</label>
-                                    <input type="text" readonly value={{ $subCategory->slug }} name="slug" id="slug" class="form-control" placeholder="Slug">
+                                    <input type="text" readonly value="{{ $subCategory->slug }}" name="slug" id="slug" class="form-control" placeholder="Slug">
                                     <p></p>
                                 </div>
                             </div>
@@ -57,8 +52,8 @@
                                 <div class="mb-3">
                                     <label for="status">Trạng thái</label>
                                     <select name="status" id="status" class="form-control">
-                                        <option {{ ($subCategory->status == 1) ? 'selected' : '' }} value="1">Active</option>
-                                        <option {{ ($subCategory->status == 0) ? 'selected' : '' }} value="0">Block</option>
+                                        <option {{ ($subCategory->status == 1) ? 'selected' : '' }} value="1">Mở</option>
+                                        <option {{ ($subCategory->status == 0) ? 'selected' : '' }} value="0">Đóng</option>
                                     </select>
                                     <p></p>
                                 </div>
@@ -67,8 +62,8 @@
                                 <div class="mb-3">
                                     <label for="showHome">Hiển thị ở trang chủ</label>
                                     <select name="showHome" id="showHome" class="form-control">
-                                        <option {{ ($subCategory->status == 'Yes') ? 'selected' : '' }} value="Yes">Yes</option>
-                                        <option {{ ($subCategory->status == 'No') ? 'selected' : '' }} value="No">No</option>
+                                        <option {{ ($subCategory->status == 'Yes') ? 'selected' : '' }} value="Yes">Có</option>
+                                        <option {{ ($subCategory->status == 'No') ? 'selected' : '' }} value="No">Không</option>
                                     </select>
                                 </div>
                             </div>
@@ -80,12 +75,9 @@
                     <a href="{{ route('sub-categories.index') }}" class="btn btn-outline-dark ml-3">Hủy bỏ</a>
                 </div>
             </form>
-
         </div>
-        <!-- /.card -->
     </section>
-    <!-- /.content -->
-    @endsection
+@endsection
 
 @section('js')
     <script>
@@ -109,9 +101,6 @@
                         $('#name').removeClass('is-invalid').siblings('p').removeClass(
                             'invalid-feedback').html("");
 
-                        $('#slug').removeClass('is-invalid').siblings('p').removeClass(
-                            'invalid-feedback').html("");
-
                         $('#category').removeClass('is-invalid').siblings('p').removeClass(
                             'invalid-feedback').html("");
                     } else {
@@ -122,22 +111,6 @@
                                 .html(errors['name']);
                         } else {
                             $('#name').removeClass('is-invalid').siblings('p').removeClass(
-                                'invalid-feedback').html("");
-                        }
-
-                        if (errors['slug']) {
-                            $('#slug').addClass('is-invalid').siblings('p').addClass('invalid-feedback')
-                                .html(errors['slug']);
-                        } else {
-                            $('#slug').removeClass('is-invalid').siblings('p').removeClass(
-                                'invalid-feedback').html("");
-                        }
-
-                        if (errors['status']) {
-                            $('#status').addClass('is-invalid').siblings('p').addClass('invalid-feedback')
-                                .html(errors['status']);
-                        } else {
-                            $('#status').removeClass('is-invalid').siblings('p').removeClass(
                                 'invalid-feedback').html("");
                         }
 

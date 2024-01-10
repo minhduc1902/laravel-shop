@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\OrderItem;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -21,8 +22,6 @@ class OrderController extends Controller
 
         $orders = $orders->paginate(10);
 
-//        $data['orders'] = $orders;
-
         return view('admin.orders.list', [
             'orders' => $orders
         ]);
@@ -34,7 +33,7 @@ class OrderController extends Controller
         $orderItems = OrderItem::where('order_id', $id)->get();
         return view('admin.orders.detail', [
             'order' => $order,
-            'orderItems' => $orderItems
+            'orderItems' => $orderItems,
         ]);
     }
 

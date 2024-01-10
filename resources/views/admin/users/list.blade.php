@@ -1,10 +1,6 @@
 @extends('admin.components.app')
 
-@section('css')
-@endsection
-
 @section('content')
-    <!-- Content Header (Page header) -->
     <section class="content-header">
         <div class="container-fluid my-2">
             <div class="row mb-2">
@@ -16,11 +12,8 @@
                 </div>
             </div>
         </div>
-        <!-- /.container-fluid -->
     </section>
-    <!-- Main content -->
     <section class="content">
-        <!-- Default box -->
         <div class="container-fluid">
             @include('admin.message')
             <div class="card">
@@ -34,7 +27,6 @@
                             <div class="input-group input-group" style="width: 250px;">
                                 <input type="text" value="{{ Request::get('keyword') }}" name="keyword"
                                        class="form-control float-right" placeholder="Tìm kiếm">
-
                                 <div class="input-group-append">
                                     <button type="submit" class="btn btn-default">
                                         <i class="fas fa-search"></i>
@@ -52,6 +44,7 @@
                             <th width="60">ID</th>
                             <th>Tên</th>
                             <th>Email</th>
+                            <th>Vai trò</th>
                             <th>Số điện thoại</th>
                             <th width="100">Trạng thái</th>
                             <th width="100">Hành động</th>
@@ -64,6 +57,11 @@
                                     <td>{{ $user->id }}</td>
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
+                                    @if($user->role == 1)
+                                        <td>Khách hàng</td>
+                                    @else
+                                        <td>Admin</td>
+                                    @endif
                                     <td>{{ $user->phone }}</td>
                                     <td>
                                         @if ($user->status == 1)
@@ -112,7 +110,6 @@
                                 <td colspan="5">Không tìm thấy bản ghi</td>
                             </tr>
                         @endif
-
                         </tbody>
                     </table>
                 </div>
@@ -121,9 +118,7 @@
                 </div>
             </div>
         </div>
-        <!-- /.card -->
     </section>
-    <!-- /.content -->
 @endsection
 
 @section('js')

@@ -32,8 +32,9 @@
                             <li><a href="{{ route('account.profile') }}" >Tài khoản của tôi</a></li>
                         @else
                             <li><a href="{{ route('account.login') }}">Đăng nhập/Đăng ký</a></li>
+                            <li><a href="{{ route('admin.login') }}">Admin</a></li>
                         @endif
-						<li><a href="{{ route('account.orders') }}" title="Contact Us">Giỏ hàng của tôi</a></li>
+						<li><a href="{{ route('account.orders') }}">Giỏ hàng của tôi</a></li>
 					</ul>
 				</div>
 			</div>

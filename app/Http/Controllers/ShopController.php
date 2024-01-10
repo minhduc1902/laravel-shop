@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Brand;
+use App\Models\Origin;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\SubCategory;
@@ -14,10 +14,10 @@ class ShopController extends Controller
     public function index(Request $request, $categorySlug = null, $subCategorySlug = null) {
         $categorySelected = '';
         $subCategorySelected = '';
-        $brandsArray = [];
+        $originsArray = [];
 
         $categories = Category::orderBy('name', 'ASC')->with('sub_category')->where('status', 1)->get();
-        $brands = Brand::orderBy('name', 'ASC')->where('status', 1)->get();
+        $origins = Origin::orderBy('name', 'ASC')->where('status', 1)->get();
 
         //Apply filter
         $products = Product::where('status', 1);
@@ -32,9 +32,9 @@ class ShopController extends Controller
             $subCategorySelected = $subCategory->id;
         }
 
-        if(!empty($request->get('brand'))) {
-            $brandsArray = explode(',', $request->get('brand'));
-            $products = $products->whereIn('brand_id', $brandsArray);
+        if(!empty($request->get('origin'))) {
+            $originsArray = explode(',', $request->get('origin'));
+            $products = $products->whereIn('origin_id', $originsArray);
         }
 
         if(!empty($request->get('search'))) {
@@ -56,11 +56,11 @@ class ShopController extends Controller
         $products = $products->paginate(6);
 
         $data['categories'] = $categories;
-        $data['brands'] = $brands;
+        $data['origins'] = $origins;
         $data['products'] = $products;
         $data['categorySelected'] = $categorySelected;
         $data['subCategorySelected'] = $subCategorySelected;
-        $data['brandsArray'] = $brandsArray;
+        $data['originsArray'] = $originsArray;
         $data['sort'] = $request->get('sort');
 
         return view('front.shop', $data);

@@ -13,11 +13,10 @@
 
 <body class="hold-transition login-page">
 		<div class="login-box">
-			<!-- /.login-logo -->
 			@include('admin.message')
 			<div class="card card-outline card-primary">
 			  	<div class="card-header text-center">
-					<a href="#" class="h3">Ban quản trị</a>
+					<a href="#" class="h3">Admin</a>
 			  	</div>
 			  	<div class="card-body">
 					<p class="login-box-msg">Đăng nhập để bắt đầu phiên</p>
@@ -55,13 +54,10 @@
 				  		</div>
 					</form>
 			  	</div>
-			  	<!-- /.card-body -->
 			</div>
-			<!-- /.card -->
 		</div>
-		<!-- ./wrapper -->
 	</body>
-	<script src="{{ asset('admin-assets/plugins/jquery/jquery.min.js') }}"></script>
+<script src="{{ asset('admin-assets/plugins/jquery/jquery.min.js') }}"></script>
 <!-- Bootstrap 4 -->
 <script src="{{ asset('admin-assets/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <!-- AdminLTE App -->

@@ -1,12 +1,6 @@
 @extends('admin.components.app')
 
-@section('css')
-@endsection
-
 @section('content')
-    <!-- Navbar -->
-    <!-- Content Wrapper. Contains page content -->
-    <!-- Content Header (Page header) -->
     <section class="content-header">
         <div class="container-fluid my-2">
             <div class="row mb-2">
@@ -18,11 +12,8 @@
                 </div>
             </div>
         </div>
-        <!-- /.container-fluid -->
     </section>
-    <!-- Main content -->
     <section class="content">
-        <!-- Default box -->
         <div class="container-fluid">
             @include('admin.message')
             <form action="" method="post" id="changePasswordForm" name="changePasswordForm">
@@ -61,10 +52,7 @@
                 </div>
             </form>
         </div>
-        <!-- /.card -->
     </section>
-    <!-- /.content -->
-    <!-- /.content-wrapper -->
 @endsection
 
 @section('js')

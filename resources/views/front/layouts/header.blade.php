@@ -9,9 +9,6 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <!-- <li class="nav-item">
-                          <a class="nav-link active" aria-current="page" href="index.php" title="Products">Home</a>
-                    </li> -->
                     @if (getCategories()->isNotEmpty())
                         @foreach (getCategories() as $category)
                             <li class="nav-item dropdown">
@@ -22,15 +19,13 @@
                                 @if ($category->sub_category->isNotEmpty())
                                     <ul class="dropdown-menu dropdown-menu-dark">
                                         @foreach ($category->sub_category as $subCategory)
+                                            @if ($category->sub_category->isNotEmpty())
                                             <li><a class="dropdown-item nav-link"
                                                    href="{{ route('front.shop', [$category->slug, $subCategory->slug]) }}">{{ $subCategory->name }}</a>
                                             </li>
+                                            @endif
                                         @endforeach
                                     </ul>
-{{--                                @else--}}
-{{--                                <li><a class="dropdown-item nav-link"--}}
-{{--                                       href="{{ route('front.shop', $category->slug) }}">{{ $category->name }}</a>--}}
-{{--                                </li>--}}
                                 @endif
                             </li>
                         @endforeach

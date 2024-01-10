@@ -1,7 +1,5 @@
 @extends('admin.components.app')
 
-@section('css')
-
 @section('content')
     <section class="content-header">
         <div class="container-fluid my-2">
@@ -44,14 +42,6 @@
                                     </div>
                                     <div class="col-md-12">
                                         <div class="mb-3">
-                                            <label for="short_description">Mô tả ngắn</label>
-                                            <textarea name="short_description" id="short_description" cols="30"
-                                                      rows="10" class="summernote"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="mb-3">
-                                            <label for="description">Mô tả</label>
                                             <textarea name="description" id="description" cols="30" rows="10"
                                                       class="summernote"></textarea>
                                         </div>
@@ -69,9 +59,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row" id="product-gallery">
-
-                        </div>
+                        <div class="row" id="product-gallery"></div>
                         <div class="card mb-3">
                             <div class="card-body">
                                 <h2 class="h4 mb-3">Giá tiền</h2>
@@ -134,8 +122,8 @@
                                 <h2 class="h4 mb-3">Trạng thái sản phẩm</h2>
                                 <div class="mb-3">
                                     <select name="status" id="status" class="form-control">
-                                        <option value="1">Active</option>
-                                        <option value="0">Block</option>
+                                        <option value="1">Mở</option>
+                                        <option value="0">Đóng</option>
                                     </select>
                                 </div>
                             </div>
@@ -167,11 +155,11 @@
                             <div class="card-body">
                                 <h2 class="h4 mb-3">Xuất sứ</h2>
                                 <div class="mb-3">
-                                    <select name="brand" id="brand" class="form-control">
+                                    <select name="orign" id="orign" class="form-control">
                                         <option value="">Lựa chon xuất sứ</option>
-                                        @if ($brands->isNotEmpty())
-                                            @foreach ($brands as $brand)
-                                                <option value="{{ $brand->id }}">{{ $brand->name }}</option>
+                                        @if ($origins->isNotEmpty())
+                                            @foreach ($origins as $origin)
+                                                <option value="{{ $origin->id }}">{{ $origin->name }}</option>
                                             @endforeach
                                         @endif
                                     </select>
@@ -183,8 +171,8 @@
                                 <h2 class="h4 mb-3">Sản phẩm nổi bật</h2>
                                 <div class="mb-3">
                                     <select name="is_featured" id="is_featured" class="form-control">
-                                        <option value="Yes">Yes</option>
-                                        <option value="No">No</option>
+                                        <option value="Yes">Có</option>
+                                        <option value="No">Không</option>
                                     </select>
                                     <p class="error"></p>
                                 </div>
@@ -291,7 +279,7 @@
                 var html = `<div class="col-md-3" id="image-row-${response.image_id}">
                                 <div class = "card">
                                     <input type="hidden" name="image_array[]" value="${response.image_id}">
-                                    <img src="${response.ImagePath}" class="card-img-top" alt = "" >
+                                    <img src="${response.ImagePath}" class="card-img-top" alt="" >
                                     <div class = "card-body">
                                         <a href="javascript:void(0)" onclick="deleteImage(${response.image_id})" class="btn btn-danger">Delete</a>
                                     </div>

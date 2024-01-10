@@ -1,8 +1,5 @@
 @extends('admin.components.app')
 
-@section('css')
-
-@endsection
 @section('content')
     <section class="content-header">
         <div class="container-fluid my-2">
@@ -41,14 +38,6 @@
                                             <input type="text" readonly name="slug" id="slug"
                                                    class="form-control" placeholder="Slug" value="{{ $product->slug }}">
                                             <p class="error"></p>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="mb-3">
-                                            <label for="short_description">Mô tả ngắn</label>
-                                            <textarea name="short_description" id="short_description" cols="30"
-                                                      rows="10" class="summernote short_description"
-                                                      placeholder="">{{ $product->short_description }}</textarea>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
@@ -153,9 +142,9 @@
                                 <h2 class="h4 mb-3">Trạng thái sản phẩm</h2>
                                 <div class="mb-3">
                                     <select name="status" id="status" class="form-control">
-                                        <option {{ $product->status == 1 ? 'selected' : '' }} value="1">Active
+                                        <option {{ $product->status == 1 ? 'selected' : '' }} value="1">Mở
                                         </option>
-                                        <option {{ $product->status == 0 ? 'selected' : '' }} value="0">Block
+                                        <option {{ $product->status == 0 ? 'selected' : '' }} value="0">Đóng
                                         </option>
                                     </select>
                                 </div>
@@ -196,13 +185,13 @@
                             <div class="card-body">
                                 <h2 class="h4 mb-3">Xuất sứ sản phẩm</h2>
                                 <div class="mb-3">
-                                    <select name="brand" id="brand" class="form-control">
-                                        <option value="">Select a brand</option>
-                                        @if ($brands->isNotEmpty())
-                                            @foreach ($brands as $brand)
-                                                <option {{ $product->brand_id == $brand->id ? 'selected' : '' }}
-                                                        value="{{ $brand->id }}">
-                                                    {{ $brand->name }}</option>
+                                    <select name="origin" id="origin" class="form-control">
+                                        <option value="">Chọn xuất sứ</option>
+                                        @if ($origins->isNotEmpty())
+                                            @foreach ($origins as $origin)
+                                                <option {{ $product->origin_id == $origin->id ? 'selected' : '' }}
+                                                        value="{{ $origin->id }}">
+                                                    {{ $origin->name }}</option>
                                             @endforeach
                                         @endif
                                     </select>
@@ -214,10 +203,10 @@
                                 <h2 class="h4 mb-3">Sản phẩm nổi bật</h2>
                                 <div class="mb-3">
                                     <select name="is_featured" id="is_featured" class="form-control">
-                                        <option {{ $product->is_featured == 'No' ? 'selected' : '' }} value="No">No
+                                        <option {{ $product->is_featured == 'No' ? 'selected' : '' }} value="No">Không
                                         </option>
                                         <option {{ $product->is_featured == 'Yes' ? 'selected' : '' }} value="Yes">
-                                            Yes
+                                            Có
                                         </option>
                                     </select>
                                     <p class="error"></p>
@@ -355,7 +344,7 @@
                     },
                     success: function (response) {
                         if (response.status == true) {
-                            alert
+
                         }
                     }
                 });
@@ -363,7 +352,4 @@
 
         }
     </script>
-@endsection
-@section('js')
-
 @endsection

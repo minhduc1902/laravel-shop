@@ -346,16 +346,16 @@
   var $text_sm_brand_checkbox = $('<input />', {
     type: 'checkbox',
     value: 1,
-    checked: $('.brand-link').hasClass('text-sm'),
+    checked: $('.origin-link').hasClass('text-sm'),
     class: 'mr-1'
   }).on('click', function () {
     if ($(this).is(':checked')) {
-      $('.brand-link').addClass('text-sm')
+      $('.origin-link').addClass('text-sm')
     } else {
-      $('.brand-link').removeClass('text-sm')
+      $('.origin-link').removeClass('text-sm')
     }
   })
-  var $text_sm_brand_container = $('<div />', { class: 'mb-1' }).append($text_sm_brand_checkbox).append('<span>Brand</span>')
+  var $text_sm_brand_container = $('<div />', { class: 'mb-1' }).append($text_sm_brand_checkbox).append('<span>Origin</span>')
   $container.append($text_sm_brand_container)
 
   var $text_sm_sidebar_checkbox = $('<input />', {
@@ -629,7 +629,7 @@
   }
 
   var logo_skins = navbar_all_colors
-  $container.append('<h6>Brand Logo Variants</h6>')
+  $container.append('<h6>Origin Logo Variants</h6>')
   var $logo_variants = $('<div />', {
     class: 'd-flex'
   })
@@ -638,7 +638,7 @@
     href: '#'
   }).text('clear').on('click', function (e) {
     e.preventDefault()
-    var $logo = $('.brand-link')
+    var $logo = $('.origin-link')
     logo_skins.forEach(function (skin) {
       $logo.removeClass(skin)
     })
@@ -646,7 +646,7 @@
 
   var $brand_variants = createSkinBlock(logo_skins, function () {
     var color = $(this).find('option:selected').attr('class')
-    var $logo = $('.brand-link')
+    var $logo = $('.origin-link')
 
     if (color === 'navbar-light' || color === 'navbar-white') {
       $logo.addClass('text-black')
@@ -669,7 +669,7 @@
   $container.append($brand_variants)
 
   var active_brand_color = null
-  $('.brand-link')[0].classList.forEach(function (className) {
+  $('.origin-link')[0].classList.forEach(function (className) {
     if (logo_skins.indexOf(className) > -1 && active_brand_color === null) {
       active_brand_color = className.replace('navbar-', 'bg-')
     }
